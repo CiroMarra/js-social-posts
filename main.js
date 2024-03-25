@@ -75,7 +75,7 @@ posts.forEach((singlePost) => {
 
 
 const allLikeButton = document.querySelectorAll(".js-like-button")
-console.log(allLikeButton)
+
 
 const likedPost = []
 
@@ -127,7 +127,6 @@ function generateSinglePost (postObject) {
         </div>            
     </div>
     `
-    console.log (postTemplate);
     return postTemplate;
 }
 
