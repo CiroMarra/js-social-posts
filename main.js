@@ -70,9 +70,25 @@ const posts = [
 const postContainer = document.querySelector('#container');
 posts.forEach((singlePost) => {
     const postTemplate = generateSinglePost(singlePost);
-
     postContainer.innerHTML += postTemplate;
 });
+
+
+const allLikeButton = document.querySelectorAll(".js-like-button")
+console.log(allLikeButton)
+
+const likedPost = []
+
+allLikeButton.forEach((singleLikeButton) => {
+    singleLikeButton.addEventListener("click", function(event){
+        event.preventDefault()
+        this.classList.add("like-button--liked")
+        const thisId = this.dataset.postid;
+        likedPost.push(thisId);
+        const counter = document.querySelector(`#like-counter-${thisId}`)
+        counter.innerHTML = parseInt(counter.innerHTML) + 1;
+    })
+})
 
 
 // FUNCTIONS
@@ -105,7 +121,7 @@ function generateSinglePost (postObject) {
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone
+                    Piace a <b id="like-counter-${id}" class="js-likes-counter">${likes}</b> persone
                 </div>
             </div> 
         </div>            
